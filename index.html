@@ -32,6 +32,37 @@ html[data-page="inicio"] .site-header .container{justify-content:flex-end}
 <body>
 <header class="site-header">
   <div class="container">
+    <header class="site-header">
+  <div class="container">
+    <!-- Redes sociales (solo en Inicio) -->
+    <div class="social-float" role="group" aria-label="Redes sociales">
+      <a class="social-btn social-btn--tiktok" href="https://www.tiktok.com/@chinambi.magico" target="_blank" rel="noopener" aria-label="TikTok de Chinambí Mágico">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <defs><path id="tt-note" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></defs>
+          <use href="#tt-note" fill="#25f4ee" transform="translate(-1.4 -1.4)"/>
+          <use href="#tt-note" fill="#fe2c55" transform="translate(1.4 1.4)"/>
+          <use href="#tt-note" fill="#fff"/>
+        </svg>
+      </a>
+      <a class="social-btn social-btn--instagram" href="https://www.instagram.com/chinambi_magico/" target="_blank" rel="noopener" aria-label="Instagram de Chinambí Mágico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3.5" y="3.5" width="17" height="17" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.2" cy="6.8" r="1" fill="#fff" stroke="none"/>
+        </svg>
+      </a>
+    </div>
+
+    <a class="brand" href="#inicio" data-brand>Chinambí Mágico</a>
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Principal">
+      <a href="#inicio">Inicio</a>
+      <div class="nav-item"><a href="#lugares">Servicio</a><div class="submenu"><a href="#guanabana-republic">Guanábana Republic</a><a href="#coffee-habitat">Coffee Habitat</a><a href="#eco-chinambi">Eco Chinambí</a><a href="#cumbres-y-vertientes">Cumbres y Vertientes</a><a href="#casa-grande">Casa Grande</a></div></div>
+      <a href="#acerca-de">Acerca de</a>
+    </nav>
+  </div>
+</header>
+<main>
     <a class="brand" href="#inicio" data-brand>Chinambí Mágico</a>
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
     <nav class="nav" aria-label="Principal">
@@ -188,10 +219,18 @@ html[data-page="inicio"] .site-header .container{justify-content:flex-end}
   </div>
 </section>
 
-<section class="route" aria-label="Circuito de Chinambí">
-  <div class="container"><img src="assets/img/acerca-mapa.png" alt="Mapa del circuito: Coffee Habitat, Casa Grande, Guanábana Republic, Eco Chinambí y Cumbres y Vertientes" loading="lazy"></div>
+<section class="route" aria-label="Mapa de ubicaciones de Chinambí">
+  <div class="container">
+    <div class="map-embed">
+      <iframe
+        src="https://www.google.com/maps/d/embed?mid=1ph1do8AinO_vtcfBZKo-zlgGeeIuKVM&amp;ehbc=2E312F"
+        title="Mapa con las cinco ubicaciones de Chinambí Mágico"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
 </section>
-</div>
 
 <!-- ===================== GUANÁBANA REPUBLIC ===================== -->
 <div class="page" id="page-guanabana-republic" hidden>
@@ -470,6 +509,7 @@ html[data-page="inicio"] .site-header .container{justify-content:flex-end}
     <div class="footer-bottom"><span class="footer-logo"><img src="assets/svg/logo-chinambi.svg" alt="Chinambí Mágico" width="91" height="49"></span><span>© Chinambí mágico. Todos los derechos reservados.</span></div>
   </div>
 </footer>
+
 
 <!-- Icono de WhatsApp (vectorial, nítido en cualquier tamaño) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ico-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol></svg>
