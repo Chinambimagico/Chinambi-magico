@@ -16,23 +16,18 @@
 })();
 </script>
 <style>
-.page{display:none}
-html[data-page="inicio"] #page-inicio,
-html[data-page="acerca-de"] #page-acerca-de,
-html[data-page="guanabana-republic"] #page-guanabana-republic,
-html[data-page="coffee-habitat"] #page-coffee-habitat,
-html[data-page="eco-chinambi"] #page-eco-chinambi,
-html[data-page="cumbres-y-vertientes"] #page-cumbres-y-vertientes,
-html[data-page="casa-grande"] #page-casa-grande{display:block}
+/* Solo una página visible: la controla el JS con el atributo hidden */
+.page[hidden]{display:none !important}
+.page:not([hidden]){display:block}
 /* header de la portada desde el primer pintado */
 html[data-page="inicio"] [data-brand]{display:none}
 html[data-page="inicio"] .site-header .container{justify-content:flex-end}
 </style>
 </head>
 <body>
+
+<!-- ===================== HEADER (uno solo) ===================== -->
 <header class="site-header">
-  <div class="container">
-    <header class="site-header">
   <div class="container">
     <!-- Redes sociales (solo en Inicio) -->
     <div class="social-float" role="group" aria-label="Redes sociales">
@@ -62,16 +57,7 @@ html[data-page="inicio"] .site-header .container{justify-content:flex-end}
     </nav>
   </div>
 </header>
-<main>
-    <a class="brand" href="#inicio" data-brand>Chinambí Mágico</a>
-    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-    <nav class="nav" aria-label="Principal">
-      <a href="#inicio">Inicio</a>
-      <div class="nav-item"><a href="#lugares">Servicio</a><div class="submenu"><a href="#guanabana-republic">Guanábana Republic</a><a href="#coffee-habitat">Coffee Habitat</a><a href="#eco-chinambi">Eco Chinambí</a><a href="#cumbres-y-vertientes">Cumbres y Vertientes</a><a href="#casa-grande">Casa Grande</a></div></div>
-      <a href="#acerca-de">Acerca de</a>
-    </nav>
-  </div>
-</header>
+
 <main>
 
 <!-- ===================== INICIO ===================== -->
@@ -231,6 +217,7 @@ html[data-page="inicio"] .site-header .container{justify-content:flex-end}
     </div>
   </div>
 </section>
+</div>
 
 <!-- ===================== GUANÁBANA REPUBLIC ===================== -->
 <div class="page" id="page-guanabana-republic" hidden>
@@ -552,22 +539,40 @@ html[data-page="inicio"] .site-header .container{justify-content:flex-end}
   var header=document.querySelector('.site-header');
   var brand=document.querySelector('[data-brand]');
   var descTag=document.querySelector('meta[name="description"]');
+
   function route(){
     var h=(location.hash||'').replace('#','')||'inicio', goto=null;
     if(h==='lugares'){goto='lugares';h='inicio';}
     if(!document.getElementById('page-'+h)) h='inicio';
-   document.documentElement.setAttribute('data-page',h);
-    document.title=META[h].t; descTag.setAttribute('content',META[h].d);
-    header.classList.toggle('site-header--home',h==='inicio');
+
+    document.documentElement.setAttribute('data-page',h);
+
+    /* Mostrar SOLO la página activa (quita/pone el atributo hidden) */
+    document.querySelectorAll('.page').forEach(function(p){
+      p.hidden = (p.id !== 'page-'+h);
+    });
+
+    document.title=META[h].t;
+    if(descTag) descTag.setAttribute('content',META[h].d);
+    if(header) header.classList.toggle('site-header--home',h==='inicio');
     if(brand) brand.style.display=(h==='inicio')?'none':'';
+
     document.querySelectorAll('.nav a').forEach(function(a){a.removeAttribute('aria-current');});
     var cur=PLACES.indexOf(h)>-1?'#lugares':'#'+h;
     var el=document.querySelector('.nav > a[href="'+cur+'"], .nav > .nav-item > a[href="'+cur+'"]');
     if(el) el.setAttribute('aria-current','page');
+
     var tg=document.querySelector('.nav-toggle');
     if(tg && tg.getAttribute('aria-expanded')==='true') tg.click();
-    if(goto){var t=document.getElementById(goto); if(t) t.scrollIntoView(); } else window.scrollTo({top:0,left:0,behavior:'instant'});
+
+    if(goto){
+      var t=document.getElementById(goto);
+      if(t) t.scrollIntoView();
+    } else {
+      window.scrollTo({top:0,left:0,behavior:'instant'});
+    }
   }
+
   window.addEventListener('hashchange',route);
   document.addEventListener('click',function(e){
     var a=e.target.closest('a[href="#"]'); if(a) e.preventDefault();
